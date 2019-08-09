@@ -1,0 +1,68 @@
+#!/bin/bash
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[1;34m'
+BOLD='\033[1m'
+NC='\033[0m' # No Color
+
+c110="${BOLD}110 Restart marker replay${NC} — In this case, the text is exact and not left to the particular implementation; it must read: MARK yyyy = mmmm where yyyy is User-process data stream marker, and mmmm server's equivalent marker (note the spaces between markers and '=')."
+c120="${BOLD}120 Service ready in nnn minutes${NC}."
+c125="${BOLD}125 Data connection already open${NC} —  transfer starting."
+c150="${BOLD}150 File status okay${NC} —  about to open data connection."
+c202="${GREEN}202 Command not implemented, superfluous at this site.${NC}"
+c211="${GREEN}211 System status, or system help reply.${NC}"
+c212="${GREEN}212 Directory status.${NC}"
+c213="${GREEN}213 File status.${NC}"
+c214="${GREEN}214 Help message${NC} — Explains how to use the server or the meaning of a particular non-standard command. This reply is useful only to the human user."
+c215="${GREEN}215 NAME system type${NC} — Where NAME is an official system name from the registry kept by IANA."
+c220="${GREEN}220 Service ready for new user."
+c221="${GREEN}221 Service closing control connection."
+c225="${GREEN}225 Data connection open${NC} — no transfer in progress."
+c226="${GREEN}226 Closing data connection${NC} — Requested file action successful (for example, file transfer or file abort)."
+c227="${GREEN}227 Entering Passive Mode (h1,h2,h3,h4,p1,p2)."
+c228="${GREEN}228 Entering Long Passive Mode${NC} (long address, port)."
+c229="${GREEN}229 Entering Extended Passive Mode (|||port|)."
+c230="${GREEN}230 User logged in, proceed${NC} — Logged out if appropriate."
+c231="${GREEN}231 User logged out${NC} — service terminated."
+c232="${GREEN}232 Logout command noted${NC} — will complete when transfer done."
+c234="${GREEN}234 Specifies that the server accepts the authentication mechanism specified by the client, and the exchange of security data is complete${NC} — A higher level nonstandard code created by Microsoft."
+c250="${GREEN}250 Requested file action okay, completed.${NC}"
+c257="${GREEN}257 'PATHNAME' created.${NC}"
+c331="${YELLOW}331 User name okay, need password.${NC}"
+c332="${YELLOW}332 Need account for login.${NC}"
+c350="${YELLOW}350 Requested file action pending further information${NC}"
+c421="${RED}421 Service not available, closing control connection${NC} — This may be a reply to any command if the service knows it must shut down."
+c425="${RED}425 Can't open data connection.${NC}"
+c426="${RED}426 Connection closed${NC} — transfer aborted."
+c430="${RED}430 Invalid username or password${NC}"
+c434="${RED}434 Requested host unavailable.${NC}"
+c450="${RED}450 Requested file action not taken.${NC}"
+c451="${RED}451 Requested action aborted${NC} — Local error in processing."
+c452="${RED}452 Requested action not taken${NC} — Insufficient storage space in system.File unavailable (e.g., file busy)."
+c501="${RED}501 Syntax error in parameters or arguments.${NC}"
+c502="${RED}502 Command not implemented.${NC}"
+c503="${RED}503 Bad sequence of commands.${NC}"
+c504="${RED}504 Command not implemented for that parameter.${NC}"
+c530="${RED}530 Not logged in.${NC}"
+c532="${RED}532 Need account for storing files.${NC}"
+c534="${RED}534 Could Not Connect to Server - Policy Requires SSL${NC}"
+c550="${RED}550 Requested action not taken${NC} — File unavailable (e.g., file not found, no access)."
+c551="${RED}551 Requested action aborted${NC} — Page type unknown."
+c552="${RED}552 Requested file action aborted${NC} — Exceeded storage allocation (for current directory or dataset)."
+c553="${RED}553 Requested action not taken${NC} — File name not allowed."
+c631="${BOLD}631 Integrity protected reply.${NC}"
+c632="${BOLD}632 Confidentiality and integrity protected reply.${NC}"
+c633="${BOLD}633 Confidentiality protected reply.${NC}"
+
+if ! [ $1 ]; then
+    echo "No arguments"
+    exit
+fi
+
+while [ $1 ]; do
+    CODE="c$1"
+    echo -e ${!CODE}
+    shift
+done
